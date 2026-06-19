@@ -1,0 +1,135 @@
+de Author Repository
+findAllByBookId
+ 
+SELECT * FROM director d
+LEFT JOIN movie_director md ON md.director_id = d.id 
+WHERE md.movie_id = :movie_id");
+
+
+             de BookRepository
+             SELECT * FROM book
+
+
+             de Typerepository
+             SELECT * FROM genre g
+                                      LEFT JOIN movie_genre mg ON mg.genre_id = g.id
+                                      WHERE mg.movie_id = :movie_id");                         
+
+            de UserRepository
+                                      UPDATE user SET first_name = :first_name, last_name = :last_name,  
+                                                    email = :email, password = :password
+                                                    WHERE id = :id'
+
+                                    INSERT INTO user (first_name, last_name, email, password, role) 
+                                    VALUES (:first_name, :last_name, :email, :password, :role)'
+-----------------------------------------------------------------------------------
+                                    Requêtes Sql concernant ma base de données
+                                    entre la table book et Author 
+    SELECT * FROM director d
+    LEFT JOIN movie_director md ON md.director_id = d.id
+    WHERE md.movie_id = :movie_id");
+
+    SELECT * FROM Author a
+    LEFT JOIN Write w ON w.Author_id = Author.id
+    WHERE w.Book_id = :Book_id");
+
+
+
+                                        entre la table Type et Book 
+
+    SELECT * FROM Type t
+    LEFT JOIN Book_Type bt ON bt.Type_id = Type.id
+    WHERE bt.Book_id = :Book_id");
+
+                            Mise a jour et Insertion d'un utilisateur  
+
+     UPDATE user SET username=:username,first_name = :first_name, last_name = :last_name,  
+                                                    email = :email, password = :password
+                                                    WHERE id = :id'
+
+                                    INSERT INTO user (first_name, last_name, email, password, role) 
+                                    VALUES (:first_name, :last_name, :email, :password, :role)'
+
+
+
+                                    ?controller=book&action=show&id=1
+
+                                    Syntaxe
+Pour lister les enregistrement de table1, même s’il n’y a pas de correspondance avec table2, il convient d’effectuer une requête SQL utilisant la syntaxe suivante.
+
+SELECT *
+FROM table1
+LEFT JOIN table2 ON table1.id = table2.fk_id
+
+SELECT *
+FROM Author
+LEFT JOIN Write ON Author.id = Write.Author_id
+
+
+
+Bonne requêtes qui fonctionne
+SELECT *
+FROM Author
+LEFT JOIN `Write` w ON Author.id = w.Author_id 
+
+                    ------------------------------------------------------------------
+                    Autres requêtes: qui fonctionne que je met dans AuthorRepository.
+                    ------------------------------------------------------------------
+
+                                    SELECT * FROM Author a
+                                            LEFT JOIN `Write` w ON w.Author_id = a.id
+                                            WHERE w.Book_id = :Book_id
+                    ------------------------------------------------------------------
+                                                FIN DE LA REQUETE.
+                    ------------------------------------------------------------------
+
+                    ------------------------------------------------------------------
+                    Autres requêtes: qui fonctionne que je met dans TypeRepository.
+                    ----------------------------------------------------------------
+                                    lien entre Type et Book
+
+                                      SELECT * FROM Type t
+                                      LEFT JOIN Belong b ON b.Type_id = t.id
+                                      WHERE b.Book_id = :Book_id
+                      ------------------------------------------------------------------
+                                                FIN DE LA REQUETE.
+                    ------------------------------------------------------------------
+
+                   ------------------------------------------------------------------
+                    Autres requêtes: qui fonctionne que je met dans BookRepository.
+                    ----------------------------------------------------------------
+                                    lien entre Image et Book
+                                    
+                                    SELECT * FROM Book b
+                                      LEFT JOIN Image i ON I.Book_id = b.id
+                                      WHERE i.Book_id = :Book_id
+                                    
+
+SELECT *
+FROM Book
+LEFT JOIN `Write` w ON Book.id = w.Book_id  
+
+
+UserRepository
+UPDATE user SET first_name = :first_name, last_name = :last_name,  
+            email = :email, password = :password
+            WHERE id = :id'
+
+
+    INSERT INTO user (username,first_name, last_name,password, email,phone, role) 
+    VALUES (:username, :first_name, :last_name,:password, :email,:phone,:role)'
+
+
+
+    insertion de l'administrateur
+    
+INSERT INTO `User` (`id`, `first_name`, `last_name`,`password` ,`email` , `role`) VALUES
+(1,'Pedro','Ricardo','titi','Pedro.Ricardo@yhaoo.com','Admin');
+
+ 
+
+ insertion d'un Utilisateur
+    
+INSERT INTO `User` (`id`, `first_name`, `last_name`,`password` ,`email` , `role`) VALUES
+(2,'Coriande','Ameli','test','Ameli.Coriande@yhaoo.com','User');
+
